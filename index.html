@@ -68,20 +68,27 @@
 
         // Genera il testo da copiare per Claude
         function generateExport() {
-            const context = document.getElementById('generalContext').value;
-            const lastSession = document.getElementById('lastSessionNotes').value;
-            const questions = document.getElementById('questionsForNext').value;
-            
-            let exportText = "### CONTESTO PER CLAUDE ###\n\n";
-            exportText += "## Contesto Generale ##\n" + context + "\n\n";
-            exportText += "## Ultima Sessione ##\n" + lastSession + "\n\n";
-            exportText += "## Domande per Questa Sessione ##\n" + questions + "\n\n";
-            exportText += "### FINE CONTESTO ###\n\n";
-            exportText += "Per favore, considera il contesto sopra e aiutami con le domande elencate. Chiamami Theridel durante la conversazione.";
-            
-            document.getElementById('exportText').textContent = exportText;
-            document.getElementById('exportResult').style.display = 'block';
-        }
+    const context = document.getElementById('generalContext').value;
+    const lastSession = document.getElementById('lastSessionNotes').value;
+    const questions = document.getElementById('questionsForNext').value;
+
+    let exportText = "### CONTESTO PER Bot AI ###\n";
+    exportText += "**Nota**: Durante la conversazione, chiamami Theridel.\n\n";
+    exportText += "## Ambiente di lavoro ##\n";
+    exportText += "Sto utilizzando una soluzione web-based composta da:\n";
+    exportText += "- Un file HTML5 che contiene l’interfaccia e la logica JavaScript.\n";
+    exportText += "- Un file CSS esterno per lo stile.\n\n";
+    exportText += "Se durante la conversazione è necessaria una modifica al comportamento o all’aspetto della pagina, chiedimi di fornirti i file HTML e/o CSS.\n\n";
+    exportText += "## Contesto Generale ##\n" + context + "\n\n";
+    exportText += "## Ultima Sessione ##\n" + lastSession + "\n\n";
+    exportText += "## Domande per Questa Sessione ##\n" + questions + "\n\n";
+    exportText += "### FINE CONTESTO ###\n\n";
+    exportText += "Per favore, considera il contesto sopra e aiutami con le domande elencate.";
+
+    document.getElementById('exportText').textContent = exportText;
+    document.getElementById('exportResult').style.display = 'block';
+}
+
 
         // Copia il testo negli appunti
         function copyToClipboard() {
