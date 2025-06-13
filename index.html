@@ -4,94 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coaching con Claude - Theridel</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Theridel Coach</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <header>
-        <h1>Percorso di Coaching con Claude</h1>
-        <p>Una piattaforma per mantenere il contesto delle conversazioni con Claude</p>
+        <h1>Theridel Coach   Ver. 0.3</h1>
+        <p>Benvenuto nella piattaforma di coaching, accedi per gestire il tuo percorso.</p>
     </header>
 
-    <section id="context">
-        <h2>Contesto Generale</h2>
-        <textarea id="generalContext" placeholder="Inserisci qui gli obiettivi generali del tuo percorso..."></textarea>
-        <button onclick="saveContext()">Salva Contesto</button>
-    </section>
-
-    <section id="lastSession">
-        <h2>Ultima Sessione</h2>
-        <textarea id="lastSessionNotes" placeholder="Copia qui le note dall'ultima sessione con Claude..."></textarea>
-        <button onclick="saveLastSession()">Salva Sessione</button>
-    </section>
-
-    <section id="nextQuestions">
-        <h2>Domande per la Prossima Sessione</h2>
-        <textarea id="questionsForNext" placeholder="Inserisci le domande per la prossima sessione..."></textarea>
-        <button onclick="saveQuestions()">Salva Domande</button>
-    </section>
-
-    <section id="exportSection">
-        <h2>Esporta Contesto per Claude</h2>
-        <button onclick="generateExport()">Genera Testo da Copiare</button>
-        <div id="exportResult" style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-radius: 5px; display: none;">
-            <h3>Copia questo testo all'inizio della prossima conversazione con Claude:</h3>
-            <div id="exportText" style="white-space: pre-wrap; background-color: #eee; padding: 15px; border-radius: 5px;"></div>
-            <button onclick="copyToClipboard()" style="margin-top: 10px;">Copia negli Appunti</button>
-        </div>
-    </section>
-
-    <script>
-        // Carica i dati salvati quando la pagina si apre
-        window.onload = function() {
-            document.getElementById('generalContext').value = localStorage.getItem('generalContext') || '';
-            document.getElementById('lastSessionNotes').value = localStorage.getItem('lastSessionNotes') || '';
-            document.getElementById('questionsForNext').value = localStorage.getItem('questionsForNext') || '';
-        };
-
-        // Funzioni per salvare i dati
-        function saveContext() {
-            localStorage.setItem('generalContext', document.getElementById('generalContext').value);
-            alert('Contesto salvato!');
-        }
-
-        function saveLastSession() {
-            localStorage.setItem('lastSessionNotes', document.getElementById('lastSessionNotes').value);
-            alert('Note dell\'ultima sessione salvate!');
-        }
-
-        function saveQuestions() {
-            localStorage.setItem('questionsForNext', document.getElementById('questionsForNext').value);
-            alert('Domande salvate!');
-        }
-
-        // Genera il testo da copiare per Claude
-        function generateExport() {
-            const context = document.getElementById('generalContext').value;
-            const lastSession = document.getElementById('lastSessionNotes').value;
-            const questions = document.getElementById('questionsForNext').value;
-            
-            let exportText = "### CONTESTO PER CLAUDE ###\n\n";
-            exportText += "## Contesto Generale ##\n" + context + "\n\n";
-            exportText += "## Ultima Sessione ##\n" + lastSession + "\n\n";
-            exportText += "## Domande per Questa Sessione ##\n" + questions + "\n\n";
-            exportText += "### FINE CONTESTO ###\n\n";
-            exportText += "Per favore, considera il contesto sopra e aiutami con le domande elencate. Chiamami Theridel durante la conversazione.";
-            
-            document.getElementById('exportText').textContent = exportText;
-            document.getElementById('exportResult').style.display = 'block';
-        }
-
-        // Copia il testo negli appunti
-        function copyToClipboard() {
-            const exportText = document.getElementById('exportText').textContent;
-            navigator.clipboard.writeText(exportText).then(function() {
-                alert('Testo copiato negli appunti!');
-            }, function() {
-                alert('Errore durante la copia. Prova a selezionare e copiare manualmente.');
-            });
-        }
-    </script>
+    <main>
+        <button onclick="location.href='adeguamentoContesto.html'">Accedi alla modifica del contesto</button>
+    </main>
 </body>
+
 </html>
+
