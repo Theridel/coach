@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest # Ambiente in cui GitHub Actions eseguirà il workflow
     steps:
       - uses: actions/checkout@v4 # Clona il tuo repository
+      # Il tuo sito è puro HTML/CSS/JS statico, QUINDI NON INSERIRE NESSUNA RIGA 'run: npm ci && npm run build'
       - uses: FirebaseExtended/action-hosting-deploy@v0 # L'azione GitHub per il deploy su Firebase Hosting
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}' # Token fornito automaticamente da GitHub
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITO_DI_COACH }}' # Il secret che hai appena creato
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITO_DI_COACH }}' # Il secret che hai creato in precedenza
           channelId: live # Imposta il deploy sul canale live
-          projectId: sito-di-coach # Il tuo Project ID di Firebase
+          projectId: sito-di-coach # Il tuo Project ID di Firebase (assicurati che sia esattamente 'sito-di-coach')
